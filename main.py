@@ -10,7 +10,7 @@ SCREEN_WIDTH = 1000
 SCREEN_HEIGHT = 500
 
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption('OE')
+pygame.display.set_caption('MIDTERMS')
 
 background_image = pygame.image.load('background.png').convert()
 background_image = pygame.transform.scale(background_image, (SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -75,6 +75,8 @@ is_d_pressed = False
 shot_interval = 30
 current_shot_delay = 0
 
+font = pygame.font.Font(None, 36)
+
 while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -112,6 +114,9 @@ while run:
             frame_index = (frame_index + 1) % len(frames_idle)
             frame_timer = 0
         screen.blit(frames_idle[frame_index], (max(0, min(x, SCREEN_WIDTH - 12)), max(0, min(y, SCREEN_HEIGHT - 12))))
+
+    y = max(126, min(y, 381))
+    x = max(0, min(x, 855))
 
     if keys[pygame.K_SPACE] and current_shot_delay <= 0:
         projectile_x = x + 100
